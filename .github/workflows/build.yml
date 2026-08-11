@@ -22,10 +22,13 @@ jobs:
         cache: gradle
 
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+      run: |
+        sudo apt-get install -y dos2unix
+        dos2unix gradlew
+        chmod +x gradlew
 
     - name: Build with Gradle
-      run: ./gradlew assembleDebug
+      run: bash ./gradlew assembleDebug
 
     - name: Upload APK
       uses: actions/upload-artifact@v3
