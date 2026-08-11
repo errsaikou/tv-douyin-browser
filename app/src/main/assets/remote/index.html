@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>TV 遥控器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Connection Status Bar -->
+    <div id="statusBar">
+        <span id="statusDot"></span>
+        <span id="statusText">正在连接电视...</span>
+    </div>
+
+    <!-- Touchpad Area (phone → TV cursor) -->
+    <div id="touchpad">
+        <div id="touchpadHint">
+            <div class="hint-icon">👆</div>
+            <div class="hint-text">单指滑动 → 移动鼠标</div>
+            <div class="hint-text">轻触一下 → 鼠标点击</div>
+            <div class="hint-text">双指滑动 → 滚动页面</div>
+        </div>
+    </div>
+
+    <!-- Text Input & URL Area -->
+    <div id="inputArea">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="输入搜索内容或粘贴网址..."
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+        >
+        <button id="sendBtn" onclick="sendSearch()">发送</button>
+    </div>
+
+    <!-- Quick Action Buttons -->
+    <div id="actionBar">
+        <button class="action-btn" onclick="sendAction('home')">
+            <span class="btn-icon">🏠</span>
+            <span class="btn-label">主页</span>
+        </button>
+        <button class="action-btn primary" onclick="sendAction('pause')">
+            <span class="btn-icon">⏯️</span>
+            <span class="btn-label">暂停/播放</span>
+        </button>
+        <button class="action-btn" onclick="sendAction('fullscreen')">
+            <span class="btn-icon">📺</span>
+            <span class="btn-label">全屏</span>
+        </button>
+        <button class="action-btn" onclick="sendAction('back')">
+            <span class="btn-icon">↩️</span>
+            <span class="btn-label">返回</span>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer">
+        <button class="footer-btn" onclick="sendAction('toggleQr')">显示/隐藏二维码</button>
+    </div>
+
+    <script src="remote.js"></script>
+</body>
+</html>

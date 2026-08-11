@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV 浏览器</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: linear-gradient(145deg, #0a0a0f 0%, #111118 50%, #0d0d14 100%);
+            color: #ffffff;
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            padding: 48px 64px;
+            overflow-x: hidden;
+        }
+
+        /* ===== Header ===== */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0b0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+
+        .header .hint {
+            font-size: 16px;
+            color: #555566;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header .hint::before {
+            content: '📱';
+            font-size: 20px;
+        }
+
+        /* ===== Section Title ===== */
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #8888aa;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== Site Grid ===== */
+        .site-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+
+        .site-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            padding: 28px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            text-decoration: none;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: none;
+        }
+
+        .site-card:hover,
+        .site-card:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .site-card:focus {
+            border-color: #4488ff;
+            box-shadow: 0 0 0 3px rgba(68, 136, 255, 0.3), 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .site-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            flex-shrink: 0;
+        }
+
+        .site-name {
+            font-size: 18px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .site-desc {
+            font-size: 13px;
+            color: #666677;
+            white-space: nowrap;
+        }
+
+        /* ===== Site Brand Colors ===== */
+        .icon-douyin    { background: linear-gradient(135deg, #25f4ee, #fe2c55); }
+        .icon-tencent   { background: linear-gradient(135deg, #ff7300, #ff4500); }
+        .icon-iqiyi     { background: linear-gradient(135deg, #00c853, #009624); }
+        .icon-youku     { background: linear-gradient(135deg, #1e88e5, #1565c0); }
+        .icon-bilibili  { background: linear-gradient(135deg, #fb7299, #e91e8c); }
+        .icon-mango     { background: linear-gradient(135deg, #ff8f00, #ff6d00); }
+        .icon-xigua     { background: linear-gradient(135deg, #ff1744, #d50000); }
+        .icon-sohu      { background: linear-gradient(135deg, #ffab00, #ff8f00); }
+        .icon-cctv      { background: linear-gradient(135deg, #c62828, #b71c1c); }
+        .icon-custom    { background: linear-gradient(135deg, #455a64, #37474f); font-size: 28px; }
+
+        /* ===== Footer ===== */
+        .footer {
+            position: fixed;
+            bottom: 24px;
+            left: 64px;
+            right: 64px;
+            display: flex;
+            justify-content: space-between;
+            color: #333344;
+            font-size: 14px;
+        }
+
+        .footer .keys span {
+            display: inline-block;
+            padding: 3px 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 6px;
+            margin-right: 6px;
+            font-size: 12px;
+            color: #555566;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>📺 TV 浏览器</h1>
+        <div class="hint">手机扫描右下角二维码可遥控电视</div>
+    </div>
+
+    <!-- Video Sites -->
+    <div class="section-title">🎬 视频网站</div>
+    <div class="site-grid">
+        <a class="site-card" href="https://v.qq.com" tabindex="1">
+            <div class="site-icon icon-tencent">腾</div>
+            <div class="site-name">腾讯视频</div>
+            <div class="site-desc">v.qq.com</div>
+        </a>
+        <a class="site-card" href="https://www.iqiyi.com" tabindex="2">
+            <div class="site-icon icon-iqiyi">爱</div>
+            <div class="site-name">爱奇艺</div>
+            <div class="site-desc">iqiyi.com</div>
+        </a>
+        <a class="site-card" href="https://www.youku.com" tabindex="3">
+            <div class="site-icon icon-youku">优</div>
+            <div class="site-name">优酷</div>
+            <div class="site-desc">youku.com</div>
+        </a>
+        <a class="site-card" href="https://www.bilibili.com" tabindex="4">
+            <div class="site-icon icon-bilibili">B</div>
+            <div class="site-name">哔哩哔哩</div>
+            <div class="site-desc">bilibili.com</div>
+        </a>
+        <a class="site-card" href="https://www.mgtv.com" tabindex="5">
+            <div class="site-icon icon-mango">芒</div>
+            <div class="site-name">芒果TV</div>
+            <div class="site-desc">mgtv.com</div>
+        </a>
+        <a class="site-card" href="https://www.douyin.com" tabindex="6">
+            <div class="site-icon icon-douyin">抖</div>
+            <div class="site-name">抖音</div>
+            <div class="site-desc">douyin.com</div>
+        </a>
+        <a class="site-card" href="https://www.ixigua.com" tabindex="7">
+            <div class="site-icon icon-xigua">西</div>
+            <div class="site-name">西瓜视频</div>
+            <div class="site-desc">ixigua.com</div>
+        </a>
+        <a class="site-card" href="https://tv.sohu.com" tabindex="8">
+            <div class="site-icon icon-sohu">搜</div>
+            <div class="site-name">搜狐视频</div>
+            <div class="site-desc">tv.sohu.com</div>
+        </a>
+        <a class="site-card" href="https://tv.cctv.com" tabindex="9">
+            <div class="site-icon icon-cctv">央</div>
+            <div class="site-name">央视频</div>
+            <div class="site-desc">tv.cctv.com</div>
+        </a>
+        <a class="site-card" href="javascript:void(0)" id="customUrlCard" tabindex="10">
+            <div class="site-icon icon-custom">🌐</div>
+            <div class="site-name">输入网址</div>
+            <div class="site-desc">手机端输入任意网址</div>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="keys">
+            <span>◀ ▶ ▲ ▼</span> 选择网站
+            <span>确认</span> 打开
+            <span>菜单</span> 显示/隐藏二维码
+        </div>
+        <div>TV 浏览器 v1.0 · 使用 PC/手机会员观看</div>
+    </div>
+
+    <!-- Toast 提示框 -->
+    <div id="toast" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.8); color: white; padding: 20px 40px; border-radius: 12px; font-size: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 1000;">
+        提示内容
+    </div>
+
+    <script>
+        // 页面加载完成后自动聚焦第一个卡片，方便遥控器直接开始操作
+        window.onload = function() {
+            var firstCard = document.querySelector('.site-card');
+            if (firstCard) {
+                firstCard.focus();
+            }
+        };
+
+        // 点击“输入网址”卡片时，提示用户使用手机扫码
+        document.getElementById('customUrlCard').onclick = function() {
+            var toast = document.getElementById('toast');
+            toast.innerText = "请使用手机扫描右下角二维码，\n在手机端输入网址并发送！";
+            toast.style.opacity = '1';
+            setTimeout(function() {
+                toast.style.opacity = '0';
+            }, 4000);
+        };
+    </script>
+</body>
+</html>

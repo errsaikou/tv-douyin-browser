@@ -1,0 +1,261 @@
+/* ============================================
+   TV Douyin Browser — Phone Remote Control UI
+   Dark theme inspired by Douyin's brand colors
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+:root {
+    --bg: #0d0d0f;
+    --surface: #1a1a1e;
+    --surface-hover: #252529;
+    --primary: #fe2c55;
+    --primary-dim: rgba(254, 44, 85, 0.15);
+    --primary-glow: rgba(254, 44, 85, 0.35);
+    --text: #ffffff;
+    --text-secondary: #8a8a8f;
+    --text-tertiary: #5a5a5f;
+    --border: #2a2a2e;
+    --success: #25d366;
+    --radius: 12px;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+                 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    padding-top: max(12px, env(safe-area-inset-top));
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+    gap: 10px;
+}
+
+/* ===== Status Bar ===== */
+
+#statusBar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    font-size: 13px;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+}
+
+#statusDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff4444;
+    flex-shrink: 0;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+#statusDot.connected {
+    background: var(--success);
+    box-shadow: 0 0 8px var(--success);
+}
+
+/* ===== Touchpad ===== */
+
+#touchpad {
+    flex: 1;
+    min-height: 160px;
+    background: var(--surface);
+    border-radius: 16px;
+    border: 1.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, background 0.15s;
+}
+
+#touchpad:active {
+    border-color: var(--primary);
+    background: var(--surface-hover);
+}
+
+#touchpadHint {
+    text-align: center;
+    color: var(--text-tertiary);
+    pointer-events: none;
+    line-height: 1.8;
+}
+
+.hint-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+    opacity: 0.5;
+}
+
+.hint-text {
+    font-size: 12px;
+}
+
+/* Tap ripple effect */
+.ripple {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--primary-glow);
+    transform: scale(0);
+    animation: ripple-anim 0.45s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes ripple-anim {
+    to {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+/* ===== Input Area ===== */
+
+#inputArea {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+#searchInput {
+    flex: 1;
+    height: 46px;
+    padding: 0 16px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#searchInput:focus {
+    border-color: var(--primary);
+}
+
+#searchInput::placeholder {
+    color: var(--text-tertiary);
+    font-size: 13px;
+}
+
+#sendBtn {
+    height: 46px;
+    padding: 0 22px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: opacity 0.15s, transform 0.1s;
+}
+
+#sendBtn:active {
+    opacity: 0.7;
+    transform: scale(0.96);
+}
+
+/* ===== Action Buttons ===== */
+
+#actionBar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 14px 6px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.12s;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.action-btn:active {
+    background: var(--surface-hover);
+    transform: scale(0.93);
+}
+
+.action-btn.primary {
+    background: var(--primary-dim);
+    border-color: rgba(254, 44, 85, 0.35);
+}
+
+.action-btn.primary:active {
+    background: rgba(254, 44, 85, 0.3);
+}
+
+.btn-icon {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.btn-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+/* ===== Footer ===== */
+
+#footer {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.footer-btn {
+    flex: 1;
+    height: 36px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.12s;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.footer-btn:active {
+    background: var(--surface-hover);
+    color: var(--text);
+}
